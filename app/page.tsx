@@ -42,7 +42,7 @@ export default function Home() {
             </motion.div>
 
             <div className="pr-4 md:pr-32 hidden md:block">
-              <button className="p-6 px-6 text-white font-mono bg-black border-[#D4AF37] border-2 text-md hover:text-gray-300 transition uppercase rounded-none">
+              <button onClick={() => setModalOpen(true)} className="py-4 px-6 text-white font-mono bg-black border-[#D4AF37] border-2 text-md hover:text-gray-300 transition uppercase rounded-none">
                 Get free trial
               </button>
             </div>
@@ -332,7 +332,7 @@ export default function Home() {
               Trial!
             </h1>
             <button
-              className="mt-4 border-2 border-[#D4AF37] px-4 py-2 uppercase hover:text-gray-300 transition"
+              className="mt-4 border-2 border-[#D4AF37] cursor-pointer px-4 py-2 uppercase hover:text-gray-300 transition"
               onClick={() => setModalOpen(true)}
             >
               Get free trial
