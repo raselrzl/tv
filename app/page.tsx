@@ -2,10 +2,23 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ShieldCheck, Clock, Globe, MonitorSpeaker, Check } from "lucide-react";
+import {
+  ShieldCheck,
+  Clock,
+  Globe,
+  MonitorSpeaker,
+  Check,
+  BicepsFlexed,
+  Axe,
+  Sparkles,
+} from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import ContactForm from "./component/ContactForm";
+import { Modal } from "./component/Modal";
 
 export default function Home() {
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   return (
     <>
       <div className="min-h-screen bg-black">
@@ -65,9 +78,12 @@ export default function Home() {
               Real Strong8k
               <br /> subscriptions.
             </h1>
-            <button className="mt-2 px-6 py-3 border-2 border-[#d4bd71] text-white font-mono uppercase hover:text-gray-300 transition rounded-none">
+            <Link
+              href="#pricing"
+              className="mt-2 px-6 py-3 border-2 border-[#d4bd71] text-white font-mono uppercase hover:text-gray-300 transition rounded-none"
+            >
               Check Pricing
-            </button>
+            </Link>
           </motion.div>
         </div>
       </div>
@@ -78,52 +94,95 @@ export default function Home() {
         <div className="flex flex-col max-w-6xl w-full">
           <div className="mb-30">
             <div className="flex gap-4 mb-4">
-              <h1 className="text-3xl md:text-4xl font-[900]">
+              <motion.h1
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="text-3xl md:text-4xl font-[900]"
+              >
                 <span className="text-5xl md:text-6xl text-[#D4AF37] mr-2">
                   —
                 </span>
                 Why us?
-              </h1>
+              </motion.h1>
             </div>
-            <p className="text-base md:text-lg text-[#D4AF37]">
+            <motion.p
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="text-base md:text-lg text-[#D4AF37]"
+            >
               WHY OUR CLIENTS CHOOSE US AS THEIR IPTV PROVIDER?
-            </p>
+            </motion.p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-25">
             <div className="col-span-1 grid grid-cols-1 gap-8">
               <div className="flex items-center flex-col md:items-start md:flex-row  gap-4">
-                <Clock className="w-8 h-8 text-[#D4AF37] mt-1" />
+                <Clock className="w-8 h-8 text-[#D4AF37] mt-1 animate-spin" />
                 <div className="text-center md:text-start">
-                  <h2 className="text-2xl md:text-3xl font-[900] mb-2">
+                  <motion.h2
+                    className="text-2xl md:text-3xl font-[900] mb-2"
+                    initial={{ x: 100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  >
                     Fast Response
-                  </h2>
-                  <p className="text-base md:text-lg text-gray-300">
+                  </motion.h2>
+
+                  <motion.p
+                    className="text-base md:text-lg text-gray-300"
+                    initial={{ y: 40, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                  >
                     Swift support, when you need it.
-                  </p>
+                  </motion.p>
                 </div>
               </div>
 
               <div className="flex items-center flex-col md:flex-row md:items-start gap-4">
-                <Globe className="w-8 h-8 text-[#D4AF37] mt-1" />
+                <Globe className="w-8 h-8 text-[#D4AF37] mt-1 animate-spin" />
                 <div className="text-center md:text-start">
-                  <h2 className="text-2xl md:text-3xl font-[900] mb-2">
+                  <motion.h2
+                    initial={{ x: 100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="text-2xl md:text-3xl font-[900] mb-2"
+                  >
                     Global Availability
-                  </h2>
-                  <p className="text-base md:text-lg text-gray-300">
+                  </motion.h2>
+
+                  <motion.p
+                    initial={{ x: 100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                    className="text-base md:text-lg text-gray-300"
+                  >
                     Access our IPTV services worldwide.
-                  </p>
+                  </motion.p>
                 </div>
               </div>
 
               <div className="flex items-center flex-col md:flex-row md:items-start gap-4">
-                <MonitorSpeaker className="w-8 h-8 text-[#D4AF37] mt-1" />
+                <Sparkles className="w-8 h-8 text-[#D4AF37] mt-1 animate-spin" />
                 <div className="text-center md:text-start">
-                  <h2 className="text-2xl md:text-3xl font-[900] mb-2">
+                  <motion.h2
+                    initial={{ x: 100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="text-2xl md:text-3xl font-[900] mb-2"
+                  >
                     Best Quality
-                  </h2>
-                  <p className="text-base md:text-lg text-gray-300">
+                  </motion.h2>
+
+                  <motion.p
+                    initial={{ x: 100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                    className="text-base md:text-lg text-gray-300"
+                  >
                     Superior picture and sound for the best viewing.
-                  </p>
+                  </motion.p>
                 </div>
               </div>
             </div>
@@ -131,13 +190,19 @@ export default function Home() {
             <div className="col-span-1">
               {" "}
               <div className="flex-1 flex justify-center z-10">
-                <Image
-                  src="/tv2.webp"
-                  alt="IPTV Service"
-                  width={600}
-                  height={400}
-                  className="w-full max-w-md h-auto rounded-lg shadow-lg"
-                />
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1 }}
+                >
+                  <Image
+                    src="/tv2.webp"
+                    alt="IPTV Service"
+                    width={600}
+                    height={400}
+                    className="w-full max-w-md h-auto rounded-lg shadow-lg"
+                  />
+                </motion.div>
               </div>
             </div>
           </div>
@@ -145,7 +210,10 @@ export default function Home() {
       </section>
 
       {/* pricing Section */}
-      <section className="min-h-screen w-full bg-black text-white flex items-center justify-center px-4 ">
+      <section
+        id="pricing"
+        className="min-h-screen w-full bg-black text-white flex items-center justify-center px-4 "
+      >
         <div className="flex flex-col max-w-6xl w-full">
           <div className="mb-12">
             <div className="flex gap-4 mb-4">
@@ -179,7 +247,7 @@ export default function Home() {
                 >
                   {/* Recommended Badge */}
                   {isRecommended && (
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#D4AF37] text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#cdb60d] text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
                       Recommended
                     </div>
                   )}
@@ -263,7 +331,10 @@ export default function Home() {
               Strong8K <br />
               Trial!
             </h1>
-            <button className="mt-4 border-2 border-[#D4AF37] px-4 py-2 uppercase hover:text-gray-300 transition">
+            <button
+              className="mt-4 border-2 border-[#D4AF37] px-4 py-2 uppercase hover:text-gray-300 transition"
+              onClick={() => setModalOpen(true)}
+            >
               Get free trial
             </button>
           </div>
@@ -288,7 +359,7 @@ export default function Home() {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
+                    className="h-5 w-5 "
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -334,6 +405,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
+        <ContactForm />
+      </Modal>
     </>
   );
 }
