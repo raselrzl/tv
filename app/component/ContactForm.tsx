@@ -35,7 +35,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="max-w-md mx-auto p-6 rounded-xl bg-neutral-900 shadow-lg border border-neutral-700 text-white">
+    <div className="w-full mx-auto py-6 px-4 md:px-6 rounded-xl shadow-lg border border-neutral-700 text-white">
       <div className="flex flex-col items-center mb-6">
         <img src="/8k.png" alt="Logo" className="h-12 mb-2" />
         <h2 className="text-2xl font-bold text-center text-[#D4AF37]">

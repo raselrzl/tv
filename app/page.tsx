@@ -20,7 +20,7 @@ import { Modal } from "./component/Modal";
 export default function Home() {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   return (
-    <>
+    <div className="overflow-x-hidden">
       <div className="min-h-screen bg-black">
         {/* Navbar */}
         <nav className="w-full h-24 md:h-36 bg-black z-10 relative">
@@ -28,7 +28,8 @@ export default function Home() {
             <motion.div
               className="flex items-center pl-2 md:pl-24"
               initial={{ opacity: 0, y: -30 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ amount: 0.3 }}
               transition={{ duration: 1, delay: 0.3 }}
             >
               <Image
@@ -42,7 +43,10 @@ export default function Home() {
             </motion.div>
 
             <div className="pr-4 md:pr-32 hidden md:block">
-              <button onClick={() => setModalOpen(true)} className="py-4 px-6 text-white font-mono bg-black border-[#D4AF37] border-2 text-md hover:text-gray-300 transition uppercase rounded-none">
+              <button
+                onClick={() => setModalOpen(true)}
+                className="py-4 px-6 text-white font-mono bg-black border-[#D4AF37] border-2 text-md hover:text-gray-300 transition uppercase rounded-none"
+              >
                 Get free trial
               </button>
             </div>
@@ -67,7 +71,8 @@ export default function Home() {
           {/* Animated Centered Content */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ amount: 0.3 }} // triggers when 30% visible, repeats every time in view
             transition={{ duration: 1 }}
             className="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-30 px-4"
           >
@@ -96,7 +101,8 @@ export default function Home() {
             <div className="flex gap-4 mb-4">
               <motion.h1
                 initial={{ x: -100, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ amount: 0.3 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className="text-3xl md:text-4xl font-[900]"
               >
@@ -108,7 +114,8 @@ export default function Home() {
             </div>
             <motion.p
               initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ amount: 0.3 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="text-base md:text-lg text-[#D4AF37]"
             >
@@ -117,13 +124,14 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-25">
             <div className="col-span-1 grid grid-cols-1 gap-8">
-              <div className="flex items-center flex-col md:items-start md:flex-row  gap-4">
+              <div className="flex items-center flex-col md:items-start md:flex-row gap-4">
                 <Clock className="w-8 h-8 text-[#D4AF37] mt-1 animate-spin" />
                 <div className="text-center md:text-start">
                   <motion.h2
                     className="text-2xl md:text-3xl font-[900] mb-2"
                     initial={{ x: 100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ amount: 0.3 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                   >
                     Fast Response
@@ -132,7 +140,8 @@ export default function Home() {
                   <motion.p
                     className="text-base md:text-lg text-gray-300"
                     initial={{ y: 40, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ amount: 0.3 }}
                     transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
                   >
                     Swift support, when you need it.
@@ -145,7 +154,8 @@ export default function Home() {
                 <div className="text-center md:text-start">
                   <motion.h2
                     initial={{ x: 100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ amount: 0.3 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
                     className="text-2xl md:text-3xl font-[900] mb-2"
                   >
@@ -154,7 +164,8 @@ export default function Home() {
 
                   <motion.p
                     initial={{ x: 100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ amount: 0.3 }}
                     transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
                     className="text-base md:text-lg text-gray-300"
                   >
@@ -168,7 +179,8 @@ export default function Home() {
                 <div className="text-center md:text-start">
                   <motion.h2
                     initial={{ x: 100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ amount: 0.3 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
                     className="text-2xl md:text-3xl font-[900] mb-2"
                   >
@@ -177,7 +189,8 @@ export default function Home() {
 
                   <motion.p
                     initial={{ x: 100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ amount: 0.3 }}
                     transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
                     className="text-base md:text-lg text-gray-300"
                   >
@@ -188,11 +201,11 @@ export default function Home() {
             </div>
 
             <div className="col-span-1">
-              {" "}
               <div className="flex-1 flex justify-center z-10">
                 <motion.div
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: false, amount: 0.3 }} // ← every time in view
                   transition={{ duration: 1 }}
                 >
                   <Image
@@ -217,18 +230,29 @@ export default function Home() {
         <div className="flex flex-col max-w-6xl w-full">
           <div className="mb-12">
             <div className="flex gap-4 mb-4">
-              <h1 className="text-3xl md:text-4xl font-[900]">
+              <motion.h1
+                className="text-3xl md:text-4xl font-[900]"
+                initial={{ x: -100, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ amount: 0.3 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
                 <span className="text-5xl md:text-6xl text-[#D4AF37] mr-2">
                   —
                 </span>
                 Pricing.
-              </h1>
+              </motion.h1>
             </div>
-            <p className="text-base md:text-lg text-[#D4AF37]">
+            <motion.p
+              className="text-base md:text-lg text-[#D4AF37]"
+              initial={{ x: 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
               We are more than a digital agency
-            </p>
+            </motion.p>
           </div>
-
           {/* Pricing Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full justify-items-center text-center">
             {[
@@ -239,11 +263,15 @@ export default function Home() {
               const isRecommended = index === 1;
 
               return (
-                <div
+                <motion.div
                   key={index}
                   className={`relative border border-[#D4AF37] p-6 rounded-none flex flex-col items-center gap-4 md:gap-10 max-w-sm w-full ${
                     isRecommended ? "bg-[#a88c32] border-0" : ""
                   }`}
+                  initial={{ y: 40, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
                 >
                   {/* Recommended Badge */}
                   {isRecommended && (
@@ -252,20 +280,40 @@ export default function Home() {
                     </div>
                   )}
 
-                  <h2
+                  <motion.h2
                     className={`text-2xl md:text-3xl font-[900] mb-2 ${
                       isRecommended ? "text-white" : ""
                     }`}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 500,
+                      damping: 20,
+                      duration: 0.6,
+                    }}
                   >
                     {plan.title}
-                  </h2>
-                  <p
+                  </motion.h2>
+
+                  <motion.p
                     className={`text-base md:text-lg ${
                       isRecommended ? "text-white" : "text-[#D4AF37]"
                     } mb-2`}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 500,
+                      damping: 20,
+                      duration: 0.6,
+                      delay: 0.1,
+                    }}
                   >
                     {plan.price}
-                  </p>
+                  </motion.p>
 
                   {[
                     "4K UHD+ UHD streaming",
@@ -274,7 +322,18 @@ export default function Home() {
                     "No Buffering",
                     "24/7 support",
                   ].map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2">
+                    <motion.div
+                      key={idx}
+                      className="flex items-center gap-2"
+                      initial={{ x: 50, opacity: 0 }}
+                      whileInView={{ x: 0, opacity: 1 }}
+                      viewport={{ once: false, amount: 0.3 }}
+                      transition={{
+                        duration: 0.5,
+                        ease: "easeOut",
+                        delay: idx * 0.1,
+                      }}
+                    >
                       <Check className="w-5 h-5 text-[#D4AF37]" />
                       <p
                         className={`text-sm md:text-base ${
@@ -283,7 +342,7 @@ export default function Home() {
                       >
                         {feature}
                       </p>
-                    </div>
+                    </motion.div>
                   ))}
 
                   <Link href={plan.link}>
@@ -297,10 +356,11 @@ export default function Home() {
                       Choose plan
                     </button>
                   </Link>
-                </div>
+                </motion.div>
               );
             })}
           </div>
+          ;
         </div>
       </section>
 
@@ -324,32 +384,56 @@ export default function Home() {
         <div className="relative z-10 flex flex-col min-h-screen max-w-6xl w-full mx-auto px-4">
           {/* Main content */}
           <div className="flex-1 flex flex-col items-center justify-center text-center py-16">
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
+            <motion.h1
+              initial={{ scale: 0.5, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-4xl md:text-5xl font-extrabold mb-4"
+            >
               Request Your <br />
               Free
               <br />
               Strong8K <br />
               Trial!
-            </h1>
-            <button
+            </motion.h1>
+            <motion.button
+              initial={{ y: 40, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
               className="mt-4 border-2 border-[#D4AF37] cursor-pointer px-4 py-2 uppercase hover:text-gray-300 transition"
               onClick={() => setModalOpen(true)}
             >
               Get free trial
-            </button>
+            </motion.button>
           </div>
 
           {/* Contact section */}
           <div className="grid grid-cols-1 md:grid-cols-2 w-full py-10 items-center">
-            <div className="flex justify-center md:justify-start mb-6 md:mb-0">
+            {/* Logo - animate from right */}
+            <motion.div
+              initial={{ y: 100, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+              className="flex justify-center md:justify-start mb-6 md:mb-0"
+            >
               <img src="/8k.png" alt="Strong8K Logo" className="h-28" />
-            </div>
+            </motion.div>
 
-            <div className="text-center md:text-right space-y-3">
+            {/* Contact Info - animate from right */}
+            <motion.div
+              initial={{ x: 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-center md:text-right space-y-3"
+            >
               <p className="font-semibold text-lg">Contact Us</p>
 
               {/* WhatsApp */}
-              <div className="flex justify-center  md:justify-end items-center gap-2">
+              <div className="flex justify-center md:justify-end items-center gap-2">
                 <a
                   href="https://wa.me/12121212121"
                   target="_blank"
@@ -357,20 +441,21 @@ export default function Home() {
                   className="text-[#25D366] hover:scale-110 transition-transform"
                   aria-label="WhatsApp"
                 >
+                  {/* Icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 "
+                    className="h-5 w-5"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path d="M20.52 3.48A12 12 0 0 0 12 0C5.37 0 0 5.37 0 12a11.95 11.95 0 0 0 1.65 6.03L0 24l6.38-1.68A11.95 11.95 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.19-3.48-8.52zm-8.52 19.2c-2.1 0-4.18-.54-6.03-1.59l-.43-.25-3.78 1 1-3.68-.28-.46A9.97 9.97 0 0 1 2 12c0-5.52 4.48-10 10-10 2.63 0 5.18 1.03 7.07 2.93A9.94 9.94 0 0 1 22 12c0 5.52-4.48 10-10 10zm5.07-7.93c-.27-.14-1.62-.8-1.87-.9s-.43-.14-.61.14-.7.9-.86 1.08-.32.21-.59.07c-.27-.14-1.14-.42-2.17-1.34-.8-.72-1.34-1.6-1.5-1.87s-.02-.41.12-.55c.12-.12.27-.32.4-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.83-2.02-.22-.52-.45-.45-.61-.45h-.52c-.18 0-.45.07-.68.34s-.89.87-.89 2.14.91 2.48 1.03 2.66c.12.18 1.78 2.73 4.33 3.83.6.26 1.07.41 1.44.52.61.2 1.17.17 1.61.1.49-.07 1.62-.66 1.85-1.29.23-.63.23-1.17.16-1.29-.09-.14-.23-.21-.5-.34z" />
+                    <path d="M20.52 3.48A12 12 0 0 0 12 0..." />
                   </svg>
                 </a>
                 <p className="text-white">+12121212121</p>
               </div>
 
               {/* Email */}
-              <div className="flex justify-center  md:justify-end items-center gap-2">
+              <div className="flex justify-center md:justify-end items-center gap-2">
                 <a
                   href="mailto:contact@website.website"
                   className="text-[#D4AF37] hover:scale-110 transition-transform"
@@ -382,32 +467,47 @@ export default function Home() {
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
-                    <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8l8 5 8-5v10H4z" />
+                    <path d="M20 4H4a2 2 0 0 0-2 2..." />
                   </svg>
                 </a>
                 <p className="text-white">contact@website.website</p>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Footer */}
           <div className="relative w-full py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-sm text-gray-300">
             <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 border-t border-[#D4AF37]/50"></div>
-            <p>© 2025 Strong8K.website – All Rights Reserved</p>
-            <div className="flex gap-4">
+
+            <motion.p
+              initial={{ x: -100, y: 30, opacity: 0 }}
+              whileInView={{ x: 0, y: 0, opacity: 1 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.8 }}
+            >
+              © 2025 Strong8K.website – All Rights Reserved
+            </motion.p>
+
+            <motion.div
+              initial={{ x: 100, y: 30, opacity: 0 }}
+              whileInView={{ x: 0, y: 0, opacity: 1 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.8 }}
+              className="flex gap-4"
+            >
               <a href="#" className="hover:underline">
                 Privacy Policy
               </a>
               <a href="#" className="hover:underline">
                 Terms of Use
               </a>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
       <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
         <ContactForm />
       </Modal>
-    </>
+    </div>
   );
 }
