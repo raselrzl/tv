@@ -201,19 +201,19 @@ export default function Home() {
             </div>
 
             <div className="col-span-1">
-              <div className="flex-1 flex justify-center z-10">
+              <div className="flex-1 border-1 border-gray-700">
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: false, amount: 0.3 }} // ← every time in view
-                  transition={{ duration: 1 }}
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: false, amount: 0.3 }} // triggers every time it enters view
+                  transition={{ duration: 0.8, ease: "easeOut" }}
                 >
                   <Image
                     src="/tv2.webp"
                     alt="IPTV Service"
-                    width={600}
-                    height={400}
-                    className="w-full max-w-md h-auto rounded-lg shadow-lg"
+                    width={700}
+                    height={600}
+                    className="w-full max-w-xl h-auto rounded-lg shadow-lg"
                   />
                 </motion.div>
               </div>
