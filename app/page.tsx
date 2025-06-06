@@ -25,6 +25,7 @@ export default function Home() {
         {/* Navbar */}
         <nav className="w-full h-24 md:h-36 bg-black z-10 relative">
           <div className="max-w-full mx-auto px-4 py-4 flex items-center justify-between h-full">
+            <Link href="/">
             <motion.div
               className="flex items-center pl-2 md:pl-24"
               initial={{ opacity: 0, y: -30 }}
@@ -40,12 +41,12 @@ export default function Home() {
                 sizes="(max-width: 768px) 80px, 120px"
                 className="w-[70px] md:w-[120px] h-auto"
               />
-            </motion.div>
+            </motion.div></Link>
 
             <div className="pr-4 md:pr-32 hidden md:block">
               <button
                 onClick={() => setModalOpen(true)}
-                className="py-4 px-6 text-white font-mono bg-black border-[#D4AF37] border-2 text-md hover:text-gray-300 transition uppercase rounded-none"
+                className="py-4 px-6 cursor-pointer text-white font-mono bg-black border-[#D4AF37] border-2 text-md hover:text-gray-300 transition uppercase rounded-none"
               >
                 Get free trial
               </button>
@@ -96,7 +97,7 @@ export default function Home() {
 
       {/* Feature Section */}
       <section className="min-h-screen w-full bg-black text-white flex items-center justify-center px-4">
-        <div className="flex flex-col max-w-6xl w-full">
+        <div className="flex flex-col max-w-7xl w-full">
           <div className="mb-30">
             <div className="flex gap-4 mb-4">
               <motion.h1
@@ -392,9 +393,9 @@ export default function Home() {
               className="text-4xl md:text-5xl font-extrabold mb-4"
             >
               Request Your <br />
-              Free
+             <span className="text-[#D4AF37]"> Free</span>
               <br />
-              Strong8K <br />
+              Strong8K
               Trial!
             </motion.h1>
             <motion.button
@@ -402,7 +403,7 @@ export default function Home() {
               whileInView={{ y: 0, opacity: 1 }}
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="mt-4 border-2 border-[#D4AF37] cursor-pointer px-4 py-2 uppercase hover:text-gray-300 transition"
+              className="mt-10 border-2 border-[#D4AF37] cursor-pointer px-4 py-2 uppercase hover:text-gray-300 transition"
               onClick={() => setModalOpen(true)}
             >
               Get free trial
