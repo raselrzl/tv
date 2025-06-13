@@ -13,15 +13,35 @@ import {
   Sparkles,
 } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ContactForm from "./component/ContactForm";
 import { Modal } from "./component/Modal";
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [activeUsers, setActiveUsers] = useState<number | null>(null);
+
+  useEffect(() => {
+  // Count this user as active
+  fetch("/api/active", { method: "POST" })
+    .then((res) => res.json())
+    .then((data) => setActiveUsers(data.activeUsers));
+
+  // Cleanup when user leaves
+  const removeUser = () => {
+    fetch("/api/active", { method: "DELETE" });
+  };
+
+  window.addEventListener("beforeunload", removeUser);
+  return () => {
+    removeUser();
+    window.removeEventListener("beforeunload", removeUser);
+  };
+}, []);
   return (
     <div className="overflow-x-hidden">
-      <div className="min-h-screen bg-black">
+      {/* hero Section */}
+      <section className="min-h-screen bg-black">
         {/* Navbar */}
         <nav className="w-full h-24 md:h-36 bg-black z-10 relative">
           <div className="max-w-full mx-auto px-4 py-4 flex items-center justify-between h-full">
@@ -45,7 +65,7 @@ export default function Home() {
 
             <div className="pr-4 md:pr-32 hidden md:block">
               <button
-                onClick={() => setModalOpen(true)}
+                /* onClick={() => setModalOpen(true)} */
                 className="py-4 px-6 cursor-pointer text-white font-mono bg-black border-[#D4AF37] border-2 text-md hover:text-gray-300 transition uppercase rounded-none"
               >
                 Get free trial
@@ -92,7 +112,7 @@ export default function Home() {
             </Link>
           </motion.div>
         </div>
-      </div>
+      </section>
       <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-t from-black to-transparent z-0" />
 
       {/* Feature Section */}
@@ -129,7 +149,7 @@ export default function Home() {
                 <Clock className="w-8 h-8 text-[#D4AF37] mt-1 animate-spin" />
                 <div className="text-center md:text-start">
                   <motion.h2
-                    className="text-2xl md:text-3xl font-[900] mb-2"
+                    className="text-2xl md:text-3xl font-[900] mb-2 "
                     initial={{ x: 100, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     viewport={{ amount: 0.3 }}
@@ -176,7 +196,7 @@ export default function Home() {
               </div>
 
               <div className="flex items-center flex-col md:flex-row md:items-start gap-4">
-                <Sparkles className="w-8 h-8 text-[#D4AF37] mt-1 animate-spin" />
+                <Sparkles className="w-8 h-8 text-[#D4AF37] mt-1" />
                 <div className="text-center md:text-start">
                   <motion.h2
                     initial={{ x: 100, opacity: 0 }}
@@ -365,6 +385,8 @@ export default function Home() {
         </div>
       </section>
 
+
+        {/* footer Section */}
       <section
         className="relative w-full min-h-screen text-white bg-no-repeat bg-center bg-black"
         style={{
@@ -506,6 +528,15 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+
+      {activeUsers !== null && (
+  <div className="text-center py-4 text-white bg-[#111] font-mono text-sm">
+    Active Visitors Right Now: {activeUsers}
+  </div>
+)}
+
+      
       <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
         <ContactForm />
       </Modal>
